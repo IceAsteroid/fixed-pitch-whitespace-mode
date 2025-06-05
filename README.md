@@ -41,6 +41,8 @@ faster, though not noticable at all except for enormous large buffers.
 Toggling `indent-tabs-mode` triggers a re-testing for tabs and non-tabs as set
 in `indent-tabs-mode-hook`.
 
+Please, **let me know** if you know there's a way that provides better performance.
+
 ## About the global & local modes in this package
 This package provides both the local & global modes.
 
