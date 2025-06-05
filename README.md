@@ -52,4 +52,4 @@ enabled buffer or not. (Use with care as some buffers witout
 `variable-pitch-mode` may behave weirdly)
 
 The global mode `fixed-pitch-whitespace-global-mode` can be turned on, which
-enables the mode for buffers that has `variable-pitch-mode` enabled.
+enables the mode for buffers that have `variable-pitch-mode` enabled.
