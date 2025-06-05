@@ -30,13 +30,13 @@ checking the leading whitepsaces of each line are in fixed-pitch or not, if not,
 them. Instead of checking whether a line is in a org block that is displayed in fixed-pitch
 or not, which is significantly more inefficient.
 
-The code is optimized with performance is mind, which elimites unnecessary overhad as much as
+The code is optimized with performance in mind, which elimites unnecessary overhad as much as
 possible.
 
 The tab-character-included buffers and non-tab-inlucded buffers are
 differentiated underlyingly to search and refontify for, so a buffer if tested
-is without tabs in it and `indent-tabs-mode` turned on, it's gonna be slightly
-faster, though not noticable and all for enormous large buffers.
+is without tabs in it and also without `indent-tabs-mode` turned on, it's gonna be slightly
+faster, though not noticable at all except for enormous large buffers.
 
 Toggling `indent-tabs-mode` triggers a re-testing for tabs and non-tabs as set
 in `indent-tabs-mode-hook`.
