@@ -16,7 +16,5 @@ dist/
 
 # Undo-tree save-files
 *.~undo-tree
-=======
 *.elc
 *.bckup.*
->>>>>>> e720c19 (Initial commit that has been tested)
