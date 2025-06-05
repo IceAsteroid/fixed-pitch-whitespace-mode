@@ -1,4 +1,4 @@
-;;; fixed-whitespaces-mode.el --- Enable fixed-pitch whitespaces in a buffer   -*- lexical-binding: t -*-
+;;; fixed-pitch-whitespace-mode.el --- Enable fixed-pitch whitespaces in a buffer   -*- lexical-binding: t -*-
 
 ;; Requried by `buffer-face-mode'.
 (require 'face-remap)
@@ -219,7 +219,7 @@ improvements by me."
     ))
 
 (provide 'fixed-pitch-whitespace-mode)
-;;; fixed-whitespaces-mode.el ends here
+;;; fixed-pitch-whitespace-mode.el ends here
 
 ;; The following feature leared from `breadcrumb-mode` is documented in the
 ;; section of "Top > Symbols > Shorthands".
