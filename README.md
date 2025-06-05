@@ -24,24 +24,28 @@ This mode is helpful when enabled in `Info-mode` and `org-mode`. which are the c
 cases as my daily driver.
 
 ## Compatibility & Performance
-Works well among different themes, as some themes for org-mode doesn't fontify the source
+Works well among different themes, as some themes for org-mode do not fontify the source
 block headers into variable-pitch, but some do. The mode refontifies via `jit-lock` by
 checking the leading whitepsaces of each line are in fixed-pitch or not, if not, refontifies
 them. Instead of checking whether a line is in a org block that is displayed in fixed-pitch
 or not, which is significantly more inefficient.
 
-The code is optimized with performance is mind, which elimites any unnecessary overhad as much as
+The code is optimized with performance is mind, which elimites unnecessary overhad as much as
 possible.
 
-The tab-character-included buffers and non-tab-inlucded buffers are differentiated underlyingly to
-search & refontify for, so a buffer if tested is without tabs in it & `indent-tabs-mode` turned on,
-it's gonna be slightly faster, though not noticable and all for enormous large buffers.
+The tab-character-included buffers and non-tab-inlucded buffers are
+differentiated underlyingly to search and refontify for, so a buffer if tested
+is without tabs in it and `indent-tabs-mode` turned on, it's gonna be slightly
+faster, though not noticable and all for enormous large buffers.
 
-Toggling `indent-tabs-mode` triggers a re-testing for tabs & non-tabs as set in `indent-tabs-mode-hook`.
+Toggling `indent-tabs-mode` triggers a re-testing for tabs and non-tabs as set
+in `indent-tabs-mode-hook`.
 
 ## About the global & local modes in this package
 This package provides both the local & global modes, the local mode
 `fixed-pitch-whitespace-local-mode` can be turned on specifically for a buffer,
-that doesn't differentiate whether it's a `variable-pitch-mode` enabled buffer or not,
-use with care. The global mode `fixed-pitch-whitespace-global-mode` can be turned on,
-which enables the mode for buffers that has `variable-pitch-mode` enabled.
+that does not differentiate whether it's a `variable-pitch-mode` enabled
+buffer. (Use with care as some buffers witout `variable-pitch-mode` may behave
+weirdly) or not, use with care. The global mode
+`fixed-pitch-whitespace-global-mode` can be turned on, which enables the mode
+for buffers that has `variable-pitch-mode` enabled.
