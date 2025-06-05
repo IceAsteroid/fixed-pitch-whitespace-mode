@@ -233,7 +233,6 @@ improvements by me."
     (fixed-pitch-whitespace-local-mode 1)
     )
   )
-(add-hook 'indent-tabs-mode-hook 'fpw--in-indent-tabs-mode)
 
 (provide 'fixed-pitch-whitespace-mode)
 ;;; fixed-whitespaces-mode.el ends here
