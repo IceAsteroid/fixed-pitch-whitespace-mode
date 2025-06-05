@@ -1,0 +1,44 @@
+# fixed-pitch-whitespace-mode: Fixed-pitch leading whitespaces in variable-pitch buffers.
+
+The mode refontifies the leading whitespaces(spaces & tabs) into fixed-pitch.
+
+## Motivation & Purposes
+It's ineffecient for me to read monospace text, so I want to turn most text buffers like
+most modes that displays literal text such as the `Info-mode`, `org-mode` which are derived
+from text-mode to display in `variable-pitch-mode`, which displays most text in a variable
+font(that can be set in the `variable-pitch` face).
+
+However, I found it was difficult to differentiate different levels of indentations for a
+`variable-pitch-mode` enabled buffer, the leading spaces & tabs are displayed in a variable
+font.
+
+What I want is all characters inluding the spaces & tabs displayed in a variable font while
+only the leading spaces & tabs are displayed in a monospace font(elements in a buffer that
+has `fixed-pitch` face. it requires the face's font sets to a monospace font).
+
+## Use cases
+This mode is helpful when enabled in `Info-mode` and `org-mode`. which are the current use
+cases as my daily driver.
+
+## Compatibility & Performance
+Works well among different themes, as some themes for org-mode doesn't fontify the source
+block headers into variable-pitch, but some do. The mode refontifies via `jit-lock` by
+checking the leading whitepsaces of each line are in fixed-pitch or not, if not, refontifies
+them. Instead of checking whether a line is in a org block that is displayed in fixed-pitch
+or not, which is significantly more inefficient.
+
+The code is optimized with performance is mind, which elimites any unnecessary overhad as much as
+possible.
+
+The tab-character-included buffers and non-tab-inlucded buffers are differentiated underlyingly to
+search & refontify for, so a buffer if tested is without tabs in it & `indent-tabs-mode` turned on,
+it's gonna be slightly faster, though not noticable and all for enormous large buffers.
+
+Toggling `indent-tabs-mode` triggers a re-testing for tabs & non-tabs as set in `indent-tabs-mode-hook`.
+
+## About the global & local modes in this package
+This package provides both the local & global modes, the local mode
+`fixed-pitch-whitespace-local-mode` can be turned on specifically for a buffer,
+that doesn't differentiate whether it's a `variable-pitch-mode` enabled buffer or not,
+use with care. The global mode `fixed-pitch-whitespace-global-mode` can be turned on,
+which enables the mode for buffers that has `variable-pitch-mode` enabled. 
