@@ -1,20 +1,5 @@
 ;;; fixed-whitespaces-mode.el --- Enable fixed-pitch whitespaces in a buffer   -*- lexical-binding: t -*-
 
-;; TODO
-;; [Done(Maybe?)] [Needs improvement]It triggers gc too frequently.  Maybe it could use
-;; a face appending instead of checking for whether it is in block or something
-;; to not font look it, as it reduces height further by accumulating the height
-;; specification from other faces.
-
-;; [Fixed] turning on/off takes too long and to be lazily loaded by jit-lock,
-;; but still needs to optimize for re-search, it takes time the same O(n), so
-;; when scrolling fast for the first time after turning on/off the mode, it's a
-;; bit laggy.  It's solved by replacing to check each line is in a block that
-;; has fixed-pitch font or not by instead checking each line is in fixed-pitch
-;; font, this is much faster.  [Note] This way, we probably laterly have to remove two
-;; matchers into one, since there's no need todifferentiate the work on org-mode
-;; and other modes.
-
 ;; Requried by `buffer-face-mode'.
 (require 'face-remap)
 (require 'org)
@@ -231,8 +216,7 @@ improvements by me."
   ;; `fixed-pitch-whitespace-local-mode`.
   (when fixed-pitch-whitespace-local-mode
     (fixed-pitch-whitespace-local-mode 1)
-    )
-  )
+    ))
 
 (provide 'fixed-pitch-whitespace-mode)
 ;;; fixed-whitespaces-mode.el ends here
