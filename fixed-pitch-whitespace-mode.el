@@ -21,7 +21,7 @@
 (defvar-local fpw--org-block-begin-regex "^[ \t]*#\\+begin_")
 (defvar-local fpw--org-block-end-regex "^[ \t]*#\\+end_")
 
-(defun fixed-pitch-face-inheritance-p (face &optional visited)
+(defun fpw-face-inheritance-p (face &optional visited)
   "Return t if FACE or any face it inherits from is `fixed-pitch'.
 FACE may be a symbol or a list of symbols. VISITED is used to avoid cycles.
 If FACE is nil or `unspecified', the function returns nil."
@@ -31,7 +31,7 @@ If FACE is nil or `unspecified', the function returns nil."
    ;; If face is a list, check if any member qualifies.
    ((listp face)
     (cl-some (lambda (f)
-               (fixed-pitch-face-inheritance-p f visited))
+               (fpw-face-inheritance-p f visited))
              face))
    ;; Direct match.
    ((eq face 'fixed-pitch) t)
@@ -40,9 +40,9 @@ If FACE is nil or `unspecified', the function returns nil."
    (t
     (let ((inherit (face-attribute face :inherit nil nil)))  ; NOINHERIT=nil, so inheritance is followed.
       (if inherit
-          (fixed-pitch-face-inheritance-p inherit (cons face (or visited nil)))
+          (fpw-face-inheritance-p inherit (cons face (or visited nil)))
         nil)))))
-(defun char-at-point-displayed-fixed-pitch-p ()
+(defun fpw-char-at-point-displayed-fixed-pitch-p ()
   "Return t if the character at POS (or point) is rendered with a fixed-pitch face.
 This means the text property `face' is either directly `fixed-pitch'
 or inherits from it—even when the inheritance field contains multiple faces.
@@ -56,8 +56,8 @@ If the face is nil or `unspecified', it returns nil."
     (if (or (null face) (eq face 'unspecified))
         nil
       (if (listp face)
-          (cl-some #'fixed-pitch-face-inheritance-p face)
-        (fixed-pitch-face-inheritance-p face)))))
+          (cl-some #'fpw-face-inheritance-p face)
+        (fpw-face-inheritance-p face)))))
 (defun fpw--leading-whitespace-matcher (limit)
   "Match leading whitespaces outside of org-src-blocks up to LIMIT."
   (let* ((found nil)
@@ -76,7 +76,7 @@ If the face is nil or `unspecified', it returns nil."
                 ;; the previous chunk of code that checks each line is in a org
                 ;; block that is displayed in fixed-pitch or not.
                  (save-match-data
-                   (char-at-point-displayed-fixed-pitch-p))
+                   (fpw-char-at-point-displayed-fixed-pitch-p))
           (set-match-data (list (match-beginning 0) (match-end 0)))
           (setq found t))))
     found))
