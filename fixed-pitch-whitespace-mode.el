@@ -1,4 +1,4 @@
-;;; fixed-pitch-whitespace-mode.el --- Enable fixed-pitch whitespaces in a buffer   -*- lexical-binding: t -*-
+;;; fixed-whitespaces-mode.el --- Enable fixed-pitch whitespaces in a buffer   -*- lexical-binding: t -*-
 
 ;; TODO
 ;; [Done(Maybe?)] [Needs improvement]It triggers gc too frequently.  Maybe it could use
@@ -236,7 +236,7 @@ improvements by me."
 (add-hook 'indent-tabs-mode-hook 'fpw--in-indent-tabs-mode)
 
 (provide 'fixed-pitch-whitespace-mode)
-;;; fixed-pitch-whitespace-mode.el ends here
+;;; fixed-whitespaces-mode.el ends here
 
 ;; The following feature leared from `breadcrumb-mode` is documented in the
 ;; section of "Top > Symbols > Shorthands".
