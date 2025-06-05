@@ -42,10 +42,12 @@ Toggling `indent-tabs-mode` triggers a re-testing for tabs and non-tabs as set
 in `indent-tabs-mode-hook`.
 
 ## About the global & local modes in this package
-This package provides both the local & global modes, the local mode
-`fixed-pitch-whitespace-local-mode` can be turned on specifically for a buffer,
-that does not differentiate whether it's a `variable-pitch-mode` enabled
-buffer. (Use with care as some buffers witout `variable-pitch-mode` may behave
-weirdly) or not, use with care. The global mode
-`fixed-pitch-whitespace-global-mode` can be turned on, which enables the mode
-for buffers that has `variable-pitch-mode` enabled.
+This package provides both the local & global modes.
+
+The local mode `fixed-pitch-whitespace-local-mode` can be turned on specifically
+for a buffer, that does not differentiate whether it's a `variable-pitch-mode`
+enabled buffer or not. (Use with care as some buffers witout
+`variable-pitch-mode` may behave weirdly)
+
+The global mode `fixed-pitch-whitespace-global-mode` can be turned on, which
+enables the mode for buffers that has `variable-pitch-mode` enabled.
