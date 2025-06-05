@@ -58,7 +58,7 @@ If the face is nil or `unspecified', it returns nil."
       (if (listp face)
           (cl-some #'fixed-pitch-face-inheritance-p face)
         (fixed-pitch-face-inheritance-p face)))))
-(defun my/leading-whitespace-matcher-org-mode (limit)
+(defun fpw--leading-whitespace-matcher (limit)
   "Match leading whitespaces outside of org-src-blocks up to LIMIT."
   (let* ((found nil)
          (case-fold-search t))
@@ -80,17 +80,7 @@ If the face is nil or `unspecified', it returns nil."
           (set-match-data (list (match-beginning 0) (match-end 0)))
           (setq found t))))
     found))
-(defun my/leading-whitespace-matcher-other-modes (limit)
-  "Match leading whitespaces outside of org-src-blocks up to LIMIT. Better
-performance for other modes than org-mode, by simplifying matching without
-addtional org-syntax conditions."
-  (let ((case-fold-search t))
-    ;; (if (re-search-forward "^[ \t]+" limit t)
-    (if (re-search-forward fpw--org-whitespace-regex limit t)
-        (progn
-          (set-match-data (list (match-beginning 0) (match-end 0)))
-          t)
-      nil)))
+
 (defun variable-pitch-mode-p ()
   "Return non-nil if current buffer is in `variable-pitch-mode'."
   (and buffer-face-mode           ; the minor mode is on
@@ -144,7 +134,7 @@ improvements by me."
         )
       (font-lock-add-keywords
        nil
-       '((my/leading-whitespace-matcher-org-mode 0 'fixed-pitch-whitespace-face append))
+       '((fpw--leading-whitespace-matcher 0 'fixed-pitch-whitespace-face append))
        'append)
       (add-hook 'enable-theme-functions
                 'fpw--theme-switch-refontify-in-timer)
@@ -155,7 +145,7 @@ improvements by me."
       )
     (font-lock-remove-keywords
      nil
-     '((my/leading-whitespace-matcher-org-mode 0 'fixed-pitch-whitespace-face append)))
+     '((fpw--leading-whitespace-matcher 0 'fixed-pitch-whitespace-face append)))
     (remove-hook 'enable-theme-functions
                  'fpw--theme-switch-refontify-in-timer)
     (remove-hook 'disable-theme-functions
