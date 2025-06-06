@@ -12,8 +12,8 @@ font
 *Note*: The variable font and monospace font can be set respectively in the `variable-pitch` and `fixed-pitch` faces for `variable-pitch-mode`.
 
 However, I found it was difficult to differentiate distinct levels of
-indentations for a `variable-pitch-mode` enabled buffer, the leading spaces and
-tabs are displayed in a variable font.
+indentations for a `variable-pitch-mode` enabled buffer, since the leading
+spaces and tabs were displayed in a variable font.
 
 What I want is all characters inluding the spaces & tabs displayed in a variable
 font while only the leading spaces & tabs are displayed in a monospace
