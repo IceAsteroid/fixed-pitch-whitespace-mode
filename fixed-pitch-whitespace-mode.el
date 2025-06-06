@@ -187,7 +187,7 @@ improvements by me."
 ;;; only for those buffers that don't use tabs, for better performance.
 ;;; This may not be a good idea that may cause potential issues.
 (defun fpw--is-buffer-tabbed-p ()
-  "Test if the buffer has not tabs and indent-tabs-mode is not turned on."
+  "Test if the buffer has no tabs and `indent-tabs-mode' is not turned on."
   (or (save-excursion
         (without-restriction
           (goto-char (point-min))
